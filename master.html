@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Master Data — Student Verification System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <h1>MASTER DATA</h1>
+          <p>Upload, replace, or clear the student records</p>
+        </div>
+      </header>
+
+      <section class="card" style="--i:0">
+        <div class="card-head">
+          <h2>Current Master Data</h2>
+          <span id="masterPill" class="pill pill-off">Not loaded</span>
+        </div>
+        <p id="masterStatus" class="status">Master data not loaded</p>
+        <p id="masterSource" class="hint"></p>
+
+        <div class="field-row" id="idColumnRow" style="margin-top:10px">
+          <label for="idColumnSelect">Student ID column</label>
+          <select id="idColumnSelect" disabled></select>
+        </div>
+
+        <div class="download-grid" style="grid-template-columns: repeat(2, 1fr); margin-top:20px">
+          <button id="downloadJson" class="btn" disabled data-icon="download">Download master.json</button>
+          <button id="clearMaster" class="btn btn-red" disabled data-icon="x">Delete all master data</button>
+        </div>
+        <p class="hint" style="margin-top:10px">
+          To publish data for other visitors: upload an Excel below → click <strong>Download master.json</strong> → replace <code>data/master.json</code> in your repo → commit.
+        </p>
+      </section>
+
+      <section class="card" style="--i:1">
+        <div class="card-head"><h2>Upload / Replace Master Excel</h2></div>
+        <label class="dropzone" id="masterDrop">
+          <div class="dz-ico" data-icon="upload"></div>
+          <strong>Upload Master Excel</strong>
+          <span>Drop the file here or click to browse (.xlsx, .xls)</span>
+          <input type="file" id="masterFile" accept=".xlsx,.xls,.xlsm">
+        </label>
+        <div id="masterWarning" class="alert alert-warn hidden"></div>
+        <div id="masterError" class="alert alert-error hidden"></div>
+      </section>
+
+      <section class="card hidden" id="previewBox" style="--i:2">
+        <div class="card-head"><h2>Preview</h2><span class="hint" id="previewCount"></span></div>
+        <div class="table-wrap" style="max-height:400px"><table id="previewTable"></table></div>
+      </section>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts"></div>
+
+  <script src="lib/xlsx.full.min.js"></script>
+  <script src="shared.js"></script>
+  <script src="master.js"></script>
+</body>
+</html>

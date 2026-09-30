@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Student — Student Verification System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <h1>SEARCH STUDENT</h1>
+          <p>Look up individual Student IDs against the master record</p>
+        </div>
+      </header>
+
+      <section class="card" style="--i:0">
+        <div class="card-head"><h2>Search Student</h2><span class="hint">Press Enter to search</span></div>
+        <div class="search-row">
+          <div class="input-wrap" data-icon="search">
+            <input type="text" id="searchInput" placeholder="Enter Student ID" autocomplete="off">
+          </div>
+          <button id="searchBtn" class="btn">SEARCH</button>
+        </div>
+        <div id="searchResult" class="result-slot">
+          <div class="empty">Search results will appear here</div>
+        </div>
+        <div id="noDataNote" class="alert alert-warn hidden"></div>
+      </section>
+
+      <section class="card hidden" id="historyBox" style="--i:1">
+        <div class="card-head"><h2>Search History</h2><span class="pill pill-on"><span id="historyCount">0</span> unique IDs</span></div>
+        <div class="table-wrap"><table id="historyTable"></table></div>
+      </section>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts"></div>
+
+  <script src="lib/xlsx.full.min.js"></script>
+  <script>window.XLSX || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"><\/script>');</script>
+  <script src="shared.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>

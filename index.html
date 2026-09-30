@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview — Student Verification System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <h1>STUDENT VERIFICATION SYSTEM</h1>
+          <p>Overview of your verification activity</p>
+        </div>
+        <button id="resetBtn" class="btn btn-ghost" data-icon="reset">Clear / Reset</button>
+      </header>
+
+      <div id="libError" class="alert alert-error hidden"></div>
+
+      <section class="kpis">
+        <div class="kpi" style="--i:0"><div class="kpi-ico blue" data-icon="database"></div><div><small>Master Records</small><strong id="kpiRecords">0</strong></div></div>
+        <div class="kpi" style="--i:1"><div class="kpi-ico violet" data-icon="search"></div><div><small>IDs Searched</small><strong id="kpiSearched">0</strong></div></div>
+<div class="kpi kpi-clickable" id="kpiFoundCard" style="--i:2"><div class="kpi-ico green" data-icon="check"></div><div><small>Found</small><strong id="kpiFound">0</strong></div></div>
+<div class="kpi kpi-clickable" id="kpiNotFoundCard" style="--i:3"><div class="kpi-ico red" data-icon="x"></div><div><small>Not Found</small><strong id="kpiNotFound">0</strong></div></div>
+        <div class="kpi" style="--i:3"><div class="kpi-ico red" data-icon="x"></div><div><small>Not Found</small><strong id="kpiNotFound">0</strong></div></div>
+      </section>
+
+      <section class="card" style="--i:4">
+        <div class="card-head"><h2>Quick Start</h2></div>
+        <p style="color:var(--muted);font-size:14px;line-height:1.6;">
+          Use the sidebar to navigate:<br>
+          • <strong>Master Data</strong> — upload the master Excel file<br>
+          • <strong>Search Student</strong> — look up individual Student IDs<br>
+          • <strong>Batch Verification</strong> — verify a CSV of IDs and download results
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts"></div>
+
+  <script src="lib/xlsx.full.min.js"></script>
+
+  <script src="shared.js"></script>
+  <script src="overview.js"></script>
+</body>
+</html>

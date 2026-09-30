@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Batch Verification — Student Verification System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <h1>BATCH VERIFICATION</h1>
+          <p>Upload a CSV of Student IDs and download the results</p>
+        </div>
+      </header>
+
+      <section class="card" style="--i:0">
+        <div class="card-head"><h2>Batch Verification</h2><span class="hint">CSV with a Student ID column</span></div>
+        <div class="batch-grid">
+          <div>
+            <label class="dropzone" id="csvDrop">
+              <div class="dz-ico" data-icon="upload"></div>
+              <strong>Upload CSV</strong>
+              <span>Drop the file here or click to browse</span>
+              <input type="file" id="csvFile" accept=".csv,.txt">
+            </label>
+            <div id="progressBox" class="progress hidden">
+              <div class="bar"><div id="progressFill"></div></div>
+              <small id="progressText">Processing</small>
+            </div>
+            <div id="batchError" class="alert alert-error hidden"></div>
+            <div id="batchNote" class="alert alert-warn hidden"></div>
+            <div id="noDataNote" class="alert alert-warn hidden"></div>
+          </div>
+
+          <div class="batch-result">
+            <div class="donut-wrap">
+              <svg viewBox="0 0 120 120" class="donut">
+                <circle class="donut-track" cx="60" cy="60" r="52"></circle>
+                <circle id="donutFound" class="donut-found" cx="60" cy="60" r="52"></circle>
+              </svg>
+              <div class="donut-center"><strong id="sumPct">0%</strong><small>Found</small></div>
+            </div>
+            <div class="sum-list">
+              <div><small>Total Checked</small><strong id="sumTotal">0</strong></div>
+              <div class="ok"><small>Found</small><strong id="sumFound">0</strong></div>
+              <div class="bad"><small>Not Found</small><strong id="sumNotFound">0</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="download-grid">
+          <button id="dlFound" class="btn" disabled data-icon="download">Download Found Excel</button>
+          <button id="dlFoundCsv" class="btn btn-outline" disabled data-icon="download">Download Found CSV</button>
+          <button id="dlNotFound" class="btn btn-red" disabled data-icon="download">Download Not Found Excel</button>
+          <button id="dlNotFoundCsv" class="btn btn-outline-red" disabled data-icon="download">Download Not Found CSV</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts"></div>
+
+  <script src="lib/xlsx.full.min.js"></script>
+  <script>window.XLSX || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"><\/script>');</script>
+  <script src="shared.js"></script>
+  <script src="batch.js"></script>
+</body>
+</html>
